@@ -1,0 +1,116 @@
+registro/
+├── index.html
+├── styles.css
+└── script.js
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Registro de Usuario</h2>
+    <form id="registroForm">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required />
+
+      <label for="confirmar">Confirmar contraseña:</label>
+      <input type="password" id="confirmar" name="confirmar" required />
+
+      <button type="submit">Registrarse</button>
+    </form>
+    <p id="mensaje"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+🎨 2. styles.css
+css
+Copiar código
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: white;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#mensaje {
+  margin-top: 20px;
+  text-align: center;
+  color: red;
+}
+
+document.getElementById('registroForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const confirmar = document.getElementById('confirmar').value;
+  const mensaje = document.getElementById('mensaje');
+
+  if (password !== confirmar) {
+    mensaje.textContent = 'Las contraseñas no coinciden.';
+    mensaje.style.color = 'red';
+  } else {
+    mensaje.textContent = '¡Registro exitoso!';
+    mensaje.style.color = 'green';
+    // Aquí podrías enviar los datos a un servidor, si tuvieras uno.
+  }
+});
